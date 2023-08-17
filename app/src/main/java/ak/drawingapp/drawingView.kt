@@ -10,7 +10,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
-import androidx.lifecycle.viewmodel.CreationExtras
+
 
 
 class drawingView(context: Context,attri:AttributeSet): View(context,attri) {
@@ -23,9 +23,16 @@ class drawingView(context: Context,attri:AttributeSet): View(context,attri) {
     private var canvas:Canvas?=null
     private var color= Color.BLACK
     private var mPath=ArrayList<CustomPath>()
+    private var mUndopaths=ArrayList<CustomPath>()
 
     init {
         setupDrawing()
+    }
+    fun onClickUndo(){
+        if(mPath.size>0){
+            mUndopaths.add(mPath.removeAt(mPath.size-1))
+            invalidate()
+        }
     }
 
     private fun setupDrawing() {
