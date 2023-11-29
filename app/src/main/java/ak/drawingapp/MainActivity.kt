@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             permissions->
             permissions.entries.forEach{
              val permissionName=it.key
-             val isGranted =it.value
+             var isGranted =it.value
                 if(isGranted){
                     Toast.makeText(
                         this@MainActivity,
